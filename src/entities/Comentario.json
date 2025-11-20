@@ -1,0 +1,31 @@
+{
+  "name": "Comentario",
+  "type": "object",
+  "properties": {
+    "postId": {
+      "type": "string",
+      "description": "ID do post comentado"
+    },
+    "usuarioId": {
+      "type": "string",
+      "description": "ID do usu\u00e1rio que comentou"
+    },
+    "conteudo": {
+      "type": "string",
+      "description": "Conte\u00fado do coment\u00e1rio"
+    },
+    "likes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "IDs dos usu\u00e1rios que curtiram"
+    }
+  },
+  "required": [
+    "postId",
+    "usuarioId",
+    "conteudo"
+  ]
+}

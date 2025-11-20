@@ -1,0 +1,53 @@
+{
+  "name": "Post",
+  "type": "object",
+  "properties": {
+    "usuarioId": {
+      "type": "string",
+      "description": "ID do usu\u00e1rio que criou o post"
+    },
+    "conteudo": {
+      "type": "string",
+      "description": "Conte\u00fado do post"
+    },
+    "imagem": {
+      "type": "string",
+      "description": "URL da imagem anexada"
+    },
+    "tipo": {
+      "type": "string",
+      "enum": [
+        "texto",
+        "codigo",
+        "projeto",
+        "pergunta"
+      ],
+      "default": "texto",
+      "description": "Tipo do post"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags relacionadas"
+    },
+    "likes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "IDs dos usu\u00e1rios que curtiram"
+    },
+    "visualizacoes": {
+      "type": "number",
+      "default": 0,
+      "description": "N\u00famero de visualiza\u00e7\u00f5es"
+    }
+  },
+  "required": [
+    "usuarioId",
+    "conteudo"
+  ]
+}

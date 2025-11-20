@@ -1,0 +1,61 @@
+{
+  "name": "Portfolio",
+  "type": "object",
+  "properties": {
+    "usuarioId": {
+      "type": "string",
+      "description": "ID do usu\u00e1rio dono do portf\u00f3lio"
+    },
+    "titulo": {
+      "type": "string",
+      "description": "T\u00edtulo do projeto"
+    },
+    "descricao": {
+      "type": "string",
+      "description": "Descri\u00e7\u00e3o do projeto"
+    },
+    "linkGitHub": {
+      "type": "string",
+      "description": "Link do reposit\u00f3rio no GitHub"
+    },
+    "linkDemo": {
+      "type": "string",
+      "description": "Link da demo ao vivo"
+    },
+    "imagem": {
+      "type": "string",
+      "description": "URL da imagem de capa"
+    },
+    "tecnologias": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tecnologias utilizadas"
+    },
+    "destaque": {
+      "type": "boolean",
+      "default": false,
+      "description": "Se \u00e9 um projeto em destaque"
+    },
+    "stars": {
+      "type": "number",
+      "default": 0,
+      "description": "N\u00famero de estrelas"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "em_desenvolvimento",
+        "concluido",
+        "arquivado"
+      ],
+      "default": "em_desenvolvimento"
+    }
+  },
+  "required": [
+    "usuarioId",
+    "titulo",
+    "descricao"
+  ]
+}
