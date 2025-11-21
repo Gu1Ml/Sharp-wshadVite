@@ -76,7 +76,8 @@ export default function Layout({ children, currentPageName }) {
         <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-slate-800 bg-slate-950/50 backdrop-blur-xl px-6 pb-4">
           <div className="flex h-20 shrink-0 items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
-              <Code2 className="w-6 h-6 text-white" />
+              <img src="/sharp-icon.png" alt="icon" className="w-8 h-8 object-contain" />
+              {/* <Code2 className="w-6 h-6 text-white" /> */}
             </div>
             <div>
               <h1 className="text-2xl font-bold gradient-text">Sharp</h1>
