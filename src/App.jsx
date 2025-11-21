@@ -7,7 +7,7 @@ import Profile from './pages/Profile';
 import Portfolio from './pages/Portfolio';
 import Explore from './pages/Explore';
 import Settings from './pages/Settings';
-import { createPageUrl } from './utils'; // Assumindo que você tem um utils/index.js
+import { createPageUrl } from './utils';
 
 function App() {
   return (
