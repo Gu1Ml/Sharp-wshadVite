@@ -74,7 +74,7 @@ export default function Portfolio() {
               <p className="text-slate-400">Mostre seus projetos para o mundo</p>
             </div>
             <Button
-              onClick={() => setCreateDialogOpen(true)}
+              onClick={() => setCreateDialogOpen(true)} style={{ color: '#FFFFFF' }}
               className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
             >
               <PlusCircle className="w-4 h-4 mr-2" />
@@ -84,7 +84,7 @@ export default function Portfolio() {
 
           {/* Filtros */}
           <Tabs value={filterStatus} onValueChange={setFilterStatus} className="w-full">
-            <TabsList className="bg-slate-900/50 border border-slate-800">
+            <TabsList className="bg-slate-900/50 border border-slate-800" style={{ color: '#FFFFFF' }}>
               <TabsTrigger value="all">Todos ({portfolios.length})</TabsTrigger>
               <TabsTrigger value="concluido">Concluídos</TabsTrigger>
               <TabsTrigger value="em_desenvolvimento">Em Desenvolvimento</TabsTrigger>
@@ -120,7 +120,7 @@ export default function Portfolio() {
             <p className="text-slate-400 mb-6">Comece adicionando seus primeiros projetos</p>
             <Button
               onClick={() => setCreateDialogOpen(true)}
-              className="bg-gradient-to-r from-purple-600 to-blue-600"
+              className="bg-gradient-to-r from-purple-600 to-blue-600" style={{ color: '#FFFFFF' }}
             >
               <PlusCircle className="w-4 h-4 mr-2" />
               Criar Primeiro Projeto

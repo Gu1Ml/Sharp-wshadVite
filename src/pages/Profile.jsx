@@ -143,7 +143,7 @@ export default function Profile() {
                   <div className="text-xl font-bold text-white">{usuario?.seguindo?.length || 0}</div>
                   <div className="text-xs text-slate-400">Seguindo</div>
                 </div>
-                <div className="text-center">
+                <div className="text-center" >
                   <div className="text-xl font-bold text-white">{posts.length}</div>
                   <div className="text-xs text-slate-400">Posts</div>
                 </div>
@@ -193,14 +193,14 @@ export default function Profile() {
           </div>
 
           {/* Main Content */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2" style={{ color: '#FFFFFF' }}>
             <Tabs defaultValue="posts" className="w-full">
               <TabsList className="w-full bg-slate-900/50 border border-slate-800">
                 <TabsTrigger value="posts" className="flex-1">Posts ({posts.length})</TabsTrigger>
                 <TabsTrigger value="portfolio" className="flex-1">Portfólio ({portfolios.length})</TabsTrigger>
               </TabsList>
               
-              <TabsContent value="posts" className="mt-6 space-y-6">
+              <TabsContent value="posts" className="mt-6 space-y-6" >
                 {posts.length === 0 ? (
                   <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-12 text-center">
                     <Code2 className="w-16 h-16 text-slate-600 mx-auto mb-4" />

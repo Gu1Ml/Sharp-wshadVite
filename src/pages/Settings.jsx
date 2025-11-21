@@ -105,7 +105,7 @@ export default function Settings() {
 
         <form onSubmit={handleSubmit}>
           <Tabs defaultValue="profile" className="w-full">
-            <TabsList className="w-full bg-slate-900/50 border border-slate-800 mb-6">
+            <TabsList className="w-full bg-slate-900/50 border border-slate-800 mb-6" style={{ color: '#FFFFFF' }}>
               <TabsTrigger value="profile" className="flex-1">
                 <User className="w-4 h-4 mr-2" />
                 Perfil
@@ -247,7 +247,7 @@ export default function Settings() {
             <Button
               type="submit"
               disabled={updateMutation.isPending}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700" style={{ color: '#FFFFFF' }}
             >
               <Save className="w-4 h-4 mr-2" />
               {updateMutation.isPending ? "Salvando..." : "Salvar Alterações"}

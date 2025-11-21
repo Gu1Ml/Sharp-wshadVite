@@ -145,7 +145,7 @@ export default function Explore() {
                     >
                       Ver Perfil
                     </Button>
-                    <Button className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600">
+                    <Button className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600" style={{ color: '#FFFFFF' }}>
                       <UserPlus className="w-4 h-4 mr-1" />
                       Seguir
                     </Button>

@@ -112,7 +112,7 @@ export default function Feed() {
                       <p className="text-sm font-medium text-white truncate">{usuario.nome}</p>
                       <p className="text-xs text-slate-400 truncate">@{usuario.username}</p>
                     </div>
-                    <Button size="sm" variant="outline" className="text-xs border-slate-700">
+                    <Button size="sm" variant="outline" className="text-xs border-slate-700" style={{ color: '#FFFFFF' }}>
                       Seguir
                     </Button>
                   </div>
