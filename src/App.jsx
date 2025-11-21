@@ -11,17 +11,32 @@ import { createPageUrl } from './utils';
 
 function App() {
   return (
-    <Layout>
-      <Routes>
+
+    // Antiga estrutura de rotas:
+    // <Layout>
+    //   <Routes>
+    //     <Route path={createPageUrl("Feed")} element={<Feed />} />
+    //     <Route path={createPageUrl("Profile")} element={<Profile />} />
+    //     <Route path={createPageUrl("Portfolio")} element={<Portfolio />} />
+    //     <Route path={createPageUrl("Explore")} element={<Explore />} />
+    //     <Route path={createPageUrl("Settings")} element={<Settings />} />
+    //     {/* Redirecionar para o feed como padrão, ou uma página de login se quiser */}
+    //     <Route path="/" element={<Feed />} />
+    //   </Routes>
+    // </Layout>
+    
+    <Routes>
+
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Feed />} /> 
         <Route path={createPageUrl("Feed")} element={<Feed />} />
         <Route path={createPageUrl("Profile")} element={<Profile />} />
         <Route path={createPageUrl("Portfolio")} element={<Portfolio />} />
         <Route path={createPageUrl("Explore")} element={<Explore />} />
         <Route path={createPageUrl("Settings")} element={<Settings />} />
-        {/* Redirecionar para o feed como padrão, ou uma página de login se quiser */}
-        <Route path="/" element={<Feed />} />
-      </Routes>
-    </Layout>
+      </Route>
+
+    </Routes>
   );
 }
 

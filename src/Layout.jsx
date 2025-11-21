@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, Outlet } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { 
   Home, 
@@ -185,7 +185,7 @@ export default function Layout({ children, currentPageName }) {
       {/* Main Content */}
       <main className="lg:pl-72">
         <div className="min-h-screen">
-          {children}
+          <Outlet />
         </div>
       </main>
 

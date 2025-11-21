@@ -49,12 +49,19 @@ export function parseQueryString(queryString = '') {
  * Create a page URL by combining a base path and common pagination params.
  * Example: createPageUrl('/feed', 2, 20, { q: 'react' }) => '/feed?page=2&pageSize=20&q=react'
  */
-export function createPageUrl(base = '/', page = 1, pageSize = 10, extra = {}) {
-	const params = { page, pageSize, ...extra };
-	const qs = buildQueryString(params);
-	// ensure base does not already include a query
-	const [path] = base.split('?');
-	return path + qs;
+export function createPageUrl(base = '/', page, pageSize, extra = {}) {
+  // normaliza base para começar com '/'
+  if (!base.startsWith('/')) base = '/' + base;
+
+  // Só adiciona params se algum for passado
+  const params = {};
+  if (page !== undefined) params.page = page;
+  if (pageSize !== undefined) params.pageSize = pageSize;
+  Object.assign(params, extra);
+
+  const qs = buildQueryString(params);
+  const [path] = base.split('?');
+  return path + qs;
 }
 
 /**
