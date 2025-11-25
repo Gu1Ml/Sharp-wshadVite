@@ -71,13 +71,13 @@ export default function Layout({ children, currentPageName }) {
         }
       `}</style>
 
-      {/* Desktop Sidebar */}
+      {/* Sidebar Desktop */}
       <aside className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-72 lg:flex-col">
         <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-slate-800 bg-slate-950/50 backdrop-blur-xl px-6 pb-4">
           <div className="flex h-20 shrink-0 items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
               <img src="/sharp-icon.png" alt="icon" className="w-8 h-8 object-contain" />
-              {/* <Code2 className="w-6 h-6 text-white" /> */}
+              {/* icone antigo: <Code2 className="w-6 h-6 text-white" /> */} 
             </div>
             <div>
               <h1 className="text-2xl font-bold gradient-text">Sharp</h1>
@@ -135,7 +135,7 @@ export default function Layout({ children, currentPageName }) {
         </div>
       </aside>
 
-      {/* Mobile Header */}
+      {/* Cabeçalho Mobile */}
       <div className="lg:hidden sticky top-0 z-40 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800">
         <div className="flex items-center justify-between px-4 h-16">
           <div className="flex items-center gap-3">
@@ -159,7 +159,7 @@ export default function Layout({ children, currentPageName }) {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Menu Mobile */}
         {mobileMenuOpen && (
           <div className="border-t border-slate-800 bg-slate-950/95 backdrop-blur-xl">
             <nav className="px-4 py-4 space-y-1">
@@ -183,14 +183,14 @@ export default function Layout({ children, currentPageName }) {
         )}
       </div>
 
-      {/* Main Content */}
+      {/* Conteúdo Principal */}
       <main className="lg:pl-72">
         <div className="min-h-screen">
           <Outlet />
         </div>
       </main>
 
-      {/* Mobile Bottom Navigation */}
+      {/* Navegação Inferior Mobile */}
       <div className="lg:hidden fixed bottom-0 inset-x-0 bg-slate-950/90 backdrop-blur-xl border-t border-slate-800 z-40">
         <div className="flex justify-around items-center h-16 px-4">
           {navigation.slice(0, 5).map((item) => (

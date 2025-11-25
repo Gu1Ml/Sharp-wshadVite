@@ -1,19 +1,19 @@
 /*
- Mock implementation of the Base44 SDK for local development.
+ Implementação simulada do SDK Base44 para desenvolvimento local.
 
- Usage:
+ Uso:
  import { base44 } from '../api/base44Client';
  await base44.auth.me();
  await base44.entities.Post.list();
 
- This file provides in-memory arrays for Usuario, Post, Portfolio and Comentario
+ This file provides in-memory arrays para Usuario, Post, Portfolio e Comentario
  and basic CRUD/filter/list operations. It's intentionally simple and dependency-free.
 */
 
 const nowISO = () => new Date().toISOString();
 const genId = (prefix = 'id') => `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2,8)}`;
 
-// --- Mock data ---
+// --- Dados simulados (Mocks) ---
 const mockUsers = [
 	{
 		id: 'user_1',
@@ -88,10 +88,10 @@ const mockComentarios = [
 	},
 ];
 
-// current logged user id (for auth.me/updateMe)
+// ID do usuário conectado atualmente (para auth.me/updateMe)
 let currentUserId = mockUsers[0].id;
 
-// Helper: shallow-match object (query) against target
+// Auxiliar: objeto de correspondência superficial (consulta) com o alvo
 const matches = (target = {}, query = {}) => {
 	return Object.entries(query).every(([k, v]) => {
 		if (v == null) return true;
@@ -101,7 +101,7 @@ const matches = (target = {}, query = {}) => {
 	});
 };
 
-// Small artificial delay to simulate async operations (can be toggled)
+// Pequeno atraso artificial para simular operações assíncronas (pode ser ativado/desativado)
 const simulate = async (result, ms = 0) => {
 	if (ms > 0) await new Promise((r) => setTimeout(r, ms));
 	return result;
@@ -111,16 +111,16 @@ export const base44 = {
 	auth: {
 		me: async () => simulate(mockUsers.find((u) => u.id === currentUserId) || null, 50),
 		logout: async () => {
-			// For the mock we just clear currentUserId
+			// Para o mock, apenas limpamos currentUserId
 			currentUserId = null;
-			// return a resolved promise to mimic SDK
+			// retorna uma promessa resolvida para imitar o SDK
 			return simulate(true, 20);
 		},
 		redirectToLogin: () => {
-			// In dev you can replace this to actually navigate
-			// For now we just log so components can be aware
+			// Em desenvolvimento, você pode substituir isso para realmente navegar
+			// Por enquanto, apenas registramos para que os componentes possam estar cientes
 			// eslint-disable-next-line no-console
-			console.log('[base44 mock] redirectToLogin called');
+			console.log('[base44 mock] redirectToLogin chamado');
 		},
 		isAuthenticated: async () => simulate(Boolean(currentUserId), 10),
 		updateMe: async (data = {}) => {

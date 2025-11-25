@@ -74,12 +74,12 @@ export default function PostCard({ post, usuario, currentUser }) {
         </Button>
       </div>
 
-      {/* Content */}
+      {/* Conteúdo */}
       <div className="mb-4">
         <p className="text-slate-200 whitespace-pre-wrap leading-relaxed">{post.conteudo}</p>
       </div>
 
-      {/* Image */}
+      {/* Imagem */}
       {post.imagem && (
         <div className="mb-4 rounded-xl overflow-hidden border border-slate-800">
           <img 
@@ -101,7 +101,7 @@ export default function PostCard({ post, usuario, currentUser }) {
         </div>
       )}
 
-      {/* Actions */}
+      {/* Ações */}
       <div className="flex items-center gap-1 pt-4 border-t border-slate-800">
         <Button
           variant="ghost"

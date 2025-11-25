@@ -36,7 +36,7 @@ export default function PortfolioGrid({ portfolios, usuario }) {
           key={projeto.id}
           className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all group"
         >
-          {/* Image */}
+          {/* Imagem */}
           {projeto.imagem ? (
             <div className="aspect-video overflow-hidden bg-slate-800">
               <img
@@ -51,7 +51,7 @@ export default function PortfolioGrid({ portfolios, usuario }) {
             </div>
           )}
 
-          {/* Content */}
+          {/* Conteúdo */}
           <div className="p-6">
             <div className="flex items-start justify-between mb-3">
               <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 transition-colors">

@@ -28,7 +28,7 @@ export default function Explore() {
   return (
     <div className="min-h-screen pb-20 lg:pb-8">
       <div className="max-w-6xl mx-auto px-4 py-8">
-        {/* Header */}
+        {/* Cabeçalho */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
             <TrendingUp className="w-6 h-6 text-purple-400" />
@@ -82,7 +82,7 @@ export default function Explore() {
                     {usuario.nome?.[0]?.toUpperCase() || 'U'}
                   </div>
 
-                  {/* Info */}
+                  {/* Informações */}
                   <h3 className="text-lg font-semibold text-white mb-1">
                     {usuario.nome || 'Usuário'}
                   </h3>
@@ -125,7 +125,7 @@ export default function Explore() {
                     </div>
                   )}
 
-                  {/* Stats */}
+                  {/* Estatísticas */}
                   <div className="flex gap-4 mb-4 text-sm">
                     <div className="text-center">
                       <div className="font-semibold text-white">{usuario.seguidores?.length || 0}</div>
@@ -137,7 +137,7 @@ export default function Explore() {
                     </div>
                   </div>
 
-                  {/* Actions */}
+                  {/* Ações */}
                   <div className="flex gap-2 w-full">
                     <Button
                       variant="outline"

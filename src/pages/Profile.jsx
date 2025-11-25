@@ -103,7 +103,7 @@ export default function Profile() {
         </div>
       </div>
 
-      {/* Content */}
+      {/* Conteúdo */}
       <div className="max-w-5xl mx-auto px-4">
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Sidebar */}
@@ -192,7 +192,7 @@ export default function Profile() {
             )}
           </div>
 
-          {/* Main Content */}
+          {/* Conteúdo Principal */}
           <div className="lg:col-span-2" style={{ color: '#FFFFFF' }}>
             <Tabs defaultValue="posts" className="w-full">
               <TabsList className="w-full bg-slate-900/50 border border-slate-800">

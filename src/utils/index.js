@@ -4,9 +4,9 @@
  */
 
 /**
- * Build a query string from a params object.
- * - arrays are appended multiple times (key=val1&key=val2)
- * - objects are JSON-stringified
+ * Constroi uma string de consulta a partir de um objeto de parâmetros.
+ * - Os arrays são concatenados várias vezes (chave=val1&chave=val2)
+ * - objetos são convertidos para JSON
  */
 export function buildQueryString(params = {}) {
 	const usp = new URLSearchParams();
@@ -25,7 +25,7 @@ export function buildQueryString(params = {}) {
 }
 
 /**
- * Parse a query string into an object. Repeated keys become arrays.
+ * Analisa uma string de consulta e a transforma em um objeto. Chaves repetidas se tornam arrays.
  */
 export function parseQueryString(queryString = '') {
 	if (!queryString && typeof window !== 'undefined') {
@@ -46,8 +46,8 @@ export function parseQueryString(queryString = '') {
 }
 
 /**
- * Create a page URL by combining a base path and common pagination params.
- * Example: createPageUrl('/feed', 2, 20, { q: 'react' }) => '/feed?page=2&pageSize=20&q=react'
+ * Cria uma URL de página combinando um caminho base e parâmetros comuns de paginação.
+ * Exemplo: createPageUrl('/feed', 2, 20, { q: 'react' }) => '/feed?page=2&pageSize=20&q=react'
  */
 export function createPageUrl(base = '/', page, pageSize, extra = {}) {
   // normaliza base para começar com '/'
@@ -65,7 +65,7 @@ export function createPageUrl(base = '/', page, pageSize, extra = {}) {
 }
 
 /**
- * Format a date (accepts Date or string/number). Returns empty string for invalid date.
+ * Formatar uma data (aceita Date ou string/número). Retorna string vazia para data inválida.
  */
 export function formatDate(input, options = {}) {
 	if (!input) return '';
@@ -75,7 +75,7 @@ export function formatDate(input, options = {}) {
 }
 
 /**
- * Truncate a long text adding an ellipsis.
+ * Truncar um texto longo adicionando reticências.
  */
 export function truncateText(text = '', max = 100) {
 	if (text == null) return '';
@@ -84,14 +84,14 @@ export function truncateText(text = '', max = 100) {
 }
 
 /**
- * Clamp number between min and max.
+ * Limita o número entre o mínimo e o máximo.
  */
 export function clamp(value, min, max) {
 	return Math.min(max, Math.max(min, value));
 }
 
 /**
- * Simple debounce helper.
+ * Helper simples para debounce.
  */
 export function debounce(fn, wait = 200) {
 	let t;
@@ -103,7 +103,7 @@ export function debounce(fn, wait = 200) {
 }
 
 /**
- * Return avatar URL for a user object or a simple placeholder.
+ * Retorna a URL do avatar para um objeto de usuário ou um simples marcador de posição.
  */
 export function getAvatarUrl(user = {}, size = 64) {
 	if (user && user.avatarUrl) return user.avatarUrl;
