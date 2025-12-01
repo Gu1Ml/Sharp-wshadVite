@@ -95,7 +95,7 @@ export default function CreatePostCard({ user }) {
               <SelectTrigger className="bg-slate-800 border-slate-700 text-white">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="bg-slate-800 border-slate-700">
+              <SelectContent className="bg-slate-800 border-slate-700" style={{ color: '#FFFFFF' }}>
                 <SelectItem value="texto">📝 Post Normal</SelectItem>
                 <SelectItem value="codigo">💻 Compartilhar Código</SelectItem>
                 <SelectItem value="projeto">🚀 Mostrar Projeto</SelectItem>
