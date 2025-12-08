@@ -1,13 +1,9 @@
 /**
- * Utility helpers used across the app.
- * Small, dependency-free helpers for query strings, paging, formatting, debounce, etc.
- */
-
-/**
- * Constroi uma string de consulta a partir de um objeto de parâmetros.
+ * Utilitario responsavel por construir uma string de consulta a partir de um objeto de parâmetros.
  * - Os arrays são concatenados várias vezes (chave=val1&chave=val2)
  * - objetos são convertidos para JSON
  */
+
 export function buildQueryString(params = {}) {
 	const usp = new URLSearchParams();
 	Object.entries(params).forEach(([k, v]) => {
@@ -27,6 +23,7 @@ export function buildQueryString(params = {}) {
 /**
  * Analisa uma string de consulta e a transforma em um objeto. Chaves repetidas se tornam arrays.
  */
+
 export function parseQueryString(queryString = '') {
 	if (!queryString && typeof window !== 'undefined') {
 		queryString = window.location.search || '';

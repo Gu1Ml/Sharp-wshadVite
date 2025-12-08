@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import Portfolio from './pages/Portfolio';
 import Explore from './pages/Explore';
 import Settings from './pages/Settings';
+import NewPost from './pages/NewPost';
 import { createPageUrl } from './utils';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path={createPageUrl("Portfolio")} element={<Portfolio />} />
         <Route path={createPageUrl("Explore")} element={<Explore />} />
         <Route path={createPageUrl("Settings")} element={<Settings />} />
+        <Route path={createPageUrl("New-post")} element={<NewPost />} />
       </Route>
 
     </Routes>

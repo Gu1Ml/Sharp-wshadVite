@@ -91,7 +91,7 @@ export default function Profile() {
                   <Button
                     onClick={() => navigate(createPageUrl("Settings"))}
                     variant="outline"
-                    className="border-slate-700 text-white"
+                    className="border-slate-700 text-white transition-all duration-200 hover:scale-[1.03] hover:shadow-lg hover:shadow-primary/30"
                   >
                     <Settings className="w-4 h-4 mr-2" />
                     Editar Perfil
@@ -195,9 +195,9 @@ export default function Profile() {
           {/* Conteúdo Principal */}
           <div className="lg:col-span-2" style={{ color: '#FFFFFF' }}>
             <Tabs defaultValue="posts" className="w-full">
-              <TabsList className="w-full bg-slate-900/50 border border-slate-800">
-                <TabsTrigger value="posts" className="flex-1">Posts ({posts.length})</TabsTrigger>
-                <TabsTrigger value="portfolio" className="flex-1">Portfólio ({portfolios.length})</TabsTrigger>
+              <TabsList className="w-full bg-slate-900/50 border border-slate-800 ">
+                <TabsTrigger value="posts" className="flex-1 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30 data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-lg data-[state=active]:shadow-primary/30">Posts ({posts.length})</TabsTrigger>
+                <TabsTrigger value="portfolio" className="flex-1 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30 data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-lg data-[state=active]:shadow-primary/30">Portfólio ({portfolios.length})</TabsTrigger>
               </TabsList>
               
               <TabsContent value="posts" className="mt-6 space-y-6" >

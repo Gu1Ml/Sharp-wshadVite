@@ -69,7 +69,7 @@ export default function PostCard({ post, usuario, currentUser }) {
             </p>
           </div>
         </div>
-        <Button variant="ghost" size="icon" className="text-slate-400">
+        <Button variant="ghost" size="icon" className="text-slate-400 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30">
           <MoreVertical className="w-4 h-4" />
         </Button>
       </div>
@@ -107,16 +107,16 @@ export default function PostCard({ post, usuario, currentUser }) {
           variant="ghost"
           size="sm"
           onClick={handleLike}
-          className={`gap-2 ${isLiked ? 'text-red-400 hover:text-red-300' : 'text-slate-400 hover:text-slate-300'}`}
+          className={`gap-2 ${isLiked ? 'text-red-400 hover:text-red-300 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-red hover:shadow-lg hover:shadow-primary/30' : 'text-slate-400 hover:text-slate-300 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30'}`}
         >
           <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
           <span>{likesCount}</span>
         </Button>
-        <Button variant="ghost" size="sm" className="gap-2 text-slate-400 hover:text-slate-300">
+        <Button variant="ghost" size="sm" className="gap-2 text-slate-400 hover:text-slate-300 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30">
           <MessageCircle className="w-4 h-4" />
           <span>0</span>
         </Button>
-        <Button variant="ghost" size="sm" className="gap-2 text-slate-400 hover:text-slate-300">
+        <Button variant="ghost" size="sm" className="gap-2 text-slate-400 hover:text-slate-300 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30">
           <Share2 className="w-4 h-4" />
         </Button>
         <div className="ml-auto text-xs text-slate-500">

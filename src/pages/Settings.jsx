@@ -106,15 +106,15 @@ export default function Settings() {
         <form onSubmit={handleSubmit}>
           <Tabs defaultValue="profile" className="w-full">
             <TabsList className="w-full bg-slate-900/50 border border-slate-800 mb-6" style={{ color: '#FFFFFF' }}>
-              <TabsTrigger value="profile" className="flex-1">
+              <TabsTrigger value="profile" className="flex-1 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30 data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-lg data-[state=active]:shadow-primary/30">
                 <User className="w-4 h-4 mr-2" />
                 Perfil
               </TabsTrigger>
-              <TabsTrigger value="links" className="flex-1">
+              <TabsTrigger value="links" className="flex-1 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30 data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-lg data-[state=active]:shadow-primary/30">
                 <Link2 className="w-4 h-4 mr-2" />
                 Links
               </TabsTrigger>
-              <TabsTrigger value="tech" className="flex-1">
+              <TabsTrigger value="tech" className="flex-1 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30 data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-lg data-[state=active]:shadow-primary/30">
                 <Code2 className="w-4 h-4 mr-2" />
                 Tecnologias
               </TabsTrigger>

@@ -20,6 +20,7 @@ export default function Layout({ children, currentPageName }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [createPostOpen, setCreatePostOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -102,12 +103,13 @@ export default function Layout({ children, currentPageName }) {
             ))}
 
             <Button
-              onClick={() => navigate(createPageUrl("CreatePost"))}
+              onClick={() => navigate(createPageUrl("New-post"))}
               className="mt-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
             >
               <PlusCircle className="w-4 h-4 mr-2" />
               Criar Post
             </Button>
+            
           </nav>
 
           {user && (

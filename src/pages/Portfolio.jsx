@@ -85,10 +85,10 @@ export default function Portfolio() {
           {/* Filtros */}
           <Tabs value={filterStatus} onValueChange={setFilterStatus} className="w-full">
             <TabsList className="bg-slate-900/50 border border-slate-800" style={{ color: '#FFFFFF' }}>
-              <TabsTrigger value="all">Todos ({portfolios.length})</TabsTrigger>
-              <TabsTrigger value="concluido">Concluídos</TabsTrigger>
-              <TabsTrigger value="em_desenvolvimento">Em Desenvolvimento</TabsTrigger>
-              <TabsTrigger value="arquivado">Arquivados</TabsTrigger>
+              <TabsTrigger value="all" className="transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30 data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-lg data-[state=active]:shadow-primary/30">Todos ({portfolios.length})</TabsTrigger>
+              <TabsTrigger value="concluido" className="transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30 data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-lg data-[state=active]:shadow-primary/30">Concluídos</TabsTrigger>
+              <TabsTrigger value="em_desenvolvimento" className="transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30 data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-lg data-[state=active]:shadow-primary/30">Em Desenvolvimento</TabsTrigger>
+              <TabsTrigger value="arquivado" className="transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30 data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-lg data-[state=active]:shadow-primary/30">Arquivados</TabsTrigger>
             </TabsList>
           </Tabs>
         </div>

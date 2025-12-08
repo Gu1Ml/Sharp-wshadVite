@@ -21,13 +21,25 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function CreatePostCard({ user }) {
+export default function CreatePostCard({ user, forceOpen = false, onClose }) {
   const [open, setOpen] = useState(false);
   const [conteudo, setConteudo] = useState("");
   const [tipo, setTipo] = useState("texto");
   const [tags, setTags] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const queryClient = useQueryClient();
+
+    // Estado do Dialog:
+  const dialogOpen = forceOpen ? true : open;
+
+  const handleDialogChange = (isOpen) => {
+    if (!forceOpen) setOpen(isOpen);
+
+    // Se for modal na página NewPost e fechar → chamar onClose
+    if (!isOpen && onClose) {
+      onClose();
+    }
+  };
 
   const handleSubmit = async () => {
     if (!conteudo.trim() || !user) return;
@@ -64,20 +76,20 @@ export default function CreatePostCard({ user }) {
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-semibold">
               {user.full_name?.[0]?.toUpperCase() || 'U'}
             </div>
-            <div className="flex-1 bg-slate-800/50 rounded-xl px-4 py-3 text-slate-400 cursor-text">
+            <div className="flex-1 bg-slate-800/50 rounded-xl px-4 py-3 text-slate-400 cursor-text transition-all duration-200 hover:scale-[1.03] hover:text-white hover:shadow-lg hover:shadow-primary/30">
               Compartilhe algo com a comunidade...
             </div>
           </div>
           <div className="flex items-center gap-2 mt-4 pt-4 border-t border-slate-800">
-            <Button variant="ghost" size="sm" className="gap-2 text-slate-400">
+            <Button variant="ghost" size="sm" className="gap-2 text-slate-400 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30">
               <Image className="w-4 h-4" />
               <span className="hidden sm:inline">Imagem</span>
             </Button>
-            <Button variant="ghost" size="sm" className="gap-2 text-slate-400">
+            <Button variant="ghost" size="sm" className="gap-2 text-slate-400 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30">
               <Code2 className="w-4 h-4" />
               <span className="hidden sm:inline">Código</span>
             </Button>
-            <Button variant="ghost" size="sm" className="gap-2 text-slate-400">
+            <Button variant="ghost" size="sm" className="gap-2 text-slate-400 transition-all duration-200 hover:scale-[1.03] hover:bg-white hover:text-black hover:shadow-lg hover:shadow-primary/30">
               <Lightbulb className="w-4 h-4" />
               <span className="hidden sm:inline">Pergunta</span>
             </Button>
