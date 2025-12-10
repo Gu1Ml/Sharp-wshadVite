@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { PostService } from "@/api/postService";
 import { useQuery } from "@tanstack/react-query";
 import { Heart, MessageCircle, Share2, Code2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -24,12 +24,18 @@ export default function Feed() {
     };
     loadUser();
   }, []);
+  
+  // Mock descontinuado
+  // const { data: posts, isLoading } = useQuery({
+  //   queryKey: ['posts'],
+  //   queryFn: () => base44.entities.Post.list('-created_date'),
+  //   initialData: [],
+  // });
 
-  const { data: posts, isLoading } = useQuery({
-    queryKey: ['posts'],
-    queryFn: () => base44.entities.Post.list('-created_date'),
-    initialData: [],
-  });
+  const { data: posts = [], isLoading, error } = useQuery({
+    queryKey: ["posts"],
+    queryFn: () => PostService.buscarTodos(),
+  });  
 
   const { data: usuarios } = useQuery({
     queryKey: ['usuarios'],

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
+import { PostService } from "@/api/postService";
+import { UsuarioService } from "@/api/usuarioService";
 import { useQuery } from "@tanstack/react-query";
 import { Search, UserPlus, MapPin, Code2, TrendingUp } from "lucide-react";
 import { Input } from "@/components/ui/input";
