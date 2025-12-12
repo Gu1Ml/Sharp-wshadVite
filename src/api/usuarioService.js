@@ -1,4 +1,3 @@
-// src/api/usuarioService.js
 import * as api from "./api";
 
 function unwrap(ret) {
