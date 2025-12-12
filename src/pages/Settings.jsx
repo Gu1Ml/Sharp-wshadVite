@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { AuthService } from "@/api/authService";
+import { UsuarioService } from "@/api/usuarioService";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Save, User, Link2, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,7 @@ export default function Settings() {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const currentUser = await base44.auth.me();
+        const currentUser = await AuthService.buscarUsuarioLogado();
         setUser(currentUser);
       } catch (error) {
         console.log("Usuário não autenticado");
@@ -27,7 +28,10 @@ export default function Settings() {
 
   const { data: usuario } = useQuery({
     queryKey: ['usuario', user?.id],
-    queryFn: () => base44.entities.Usuario.filter({ email: user?.email }),
+    queryFn: async () => {
+      const list = await UsuarioService.buscarTodos();
+      return list.filter(u => u.email === user?.email);
+    },
     enabled: !!user,
     select: (data) => data[0]
   });
@@ -62,10 +66,7 @@ export default function Settings() {
 
   const updateMutation = useMutation({
     mutationFn: (data) => {
-      if (usuario) {
-        return base44.entities.Usuario.update(usuario.id, data);
-      }
-      return base44.entities.Usuario.create({ ...data, email: user.email });
+      return UsuarioService.atualizarPerfil({ ...data, id: usuario?.id, email: user.email });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['usuario'] });
@@ -89,7 +90,7 @@ export default function Settings() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <p className="text-slate-400 mb-4">Você precisa estar logado</p>
-          <Button onClick={() => base44.auth.redirectToLogin()}>Fazer Login</Button>
+          <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white" onClick={() => AuthService.redirectToLogin()}>Fazer Login</Button>
         </div>
       </div>
     );

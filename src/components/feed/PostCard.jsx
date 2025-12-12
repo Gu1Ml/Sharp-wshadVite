@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { base44 } from "@/api/base44Client";
+import { PostService } from "@/api/postService";
 import { useQueryClient } from "@tanstack/react-query";
 
 export default function PostCard({ post, usuario, currentUser }) {
@@ -25,7 +25,7 @@ export default function PostCard({ post, usuario, currentUser }) {
     setLikesCount(newLikes.length);
 
     try {
-      await base44.entities.Post.update(post.id, { likes: newLikes });
+      await PostService.atualizar(post.id, { likes: newLikes });
       queryClient.invalidateQueries({ queryKey: ['posts'] });
     } catch (error) {
       setIsLiked(isLiked);

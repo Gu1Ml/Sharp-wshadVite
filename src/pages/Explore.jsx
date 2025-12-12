@@ -15,7 +15,7 @@ export default function Explore() {
 
   const { data: usuarios, isLoading } = useQuery({
     queryKey: ['usuarios'],
-    queryFn: () => base44.entities.Usuario.list('-created_date'),
+    queryFn: () => UsuarioService.buscarTodos(),
     initialData: [],
   });
 

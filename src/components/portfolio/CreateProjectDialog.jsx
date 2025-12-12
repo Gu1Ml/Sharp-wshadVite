@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
+import { PortfolioService } from "@/api/portfolioService";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import {
   Dialog,
@@ -33,7 +33,7 @@ export default function CreateProjectDialog({ open, onOpenChange, usuarioId }) {
   });
 
   const createMutation = useMutation({
-    mutationFn: (data) => base44.entities.Portfolio.create(data),
+    mutationFn: (data) => PortfolioService.criar(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['portfolios'] });
       onOpenChange(false);

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PostService } from "@/api/postService";
+import { AuthService } from "@/api/authService";
+import { UsuarioService } from "@/api/usuarioService";
 import { useQuery } from "@tanstack/react-query";
 import { Heart, MessageCircle, Share2, Code2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,7 +18,7 @@ export default function Feed() {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const currentUser = await base44.auth.me();
+        const currentUser = await AuthService.buscarUsuarioLogado();
         setUser(currentUser);
       } catch (error) {
         console.log("Usuário não autenticado");
@@ -25,10 +27,10 @@ export default function Feed() {
     loadUser();
   }, []);
   
-  // Mock descontinuado
+  // Mock descontinuado (usando serviço novo)
   // const { data: posts, isLoading } = useQuery({
   //   queryKey: ['posts'],
-  //   queryFn: () => base44.entities.Post.list('-created_date'),
+  //   queryFn: () => PostService.buscarTodos(),
   //   initialData: [],
   // });
 
@@ -39,7 +41,7 @@ export default function Feed() {
 
   const { data: usuarios } = useQuery({
     queryKey: ['usuarios'],
-    queryFn: () => base44.entities.Usuario.list(),
+    queryFn: () => UsuarioService.buscarTodos(),
     initialData: [],
   });
 
@@ -86,7 +88,7 @@ export default function Feed() {
                 <Code2 className="w-16 h-16 text-slate-600 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-2">Nenhum post ainda</h3>
                 <p className="text-slate-400 mb-6">Seja o primeiro a compartilhar algo com a comunidade!</p>
-                <Button className="bg-gradient-to-r from-purple-600 to-blue-600">
+                <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white" onClick={() => {/* lógica para abrir o modal de criação de post */}}>
                   Criar Primeiro Post
                 </Button>
               </div>

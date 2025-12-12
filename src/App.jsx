@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Layout from '../Layout.jsx';
+import Layout from './layout';
 import Feed from './pages/Feed';
 import Profile from './pages/Profile';
 import Portfolio from './pages/Portfolio';

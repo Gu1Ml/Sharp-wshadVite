@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
+import { AuthService } from "@/api/authService";
+import { UsuarioService } from "@/api/usuarioService";
+import { PostService } from "@/api/postService";
+import { PortfolioService } from "@/api/portfolioService";
 import { 
   MapPin, 
   Link2, 
@@ -28,7 +31,7 @@ export default function Profile() {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const currentUser = await base44.auth.me();
+        const currentUser = await AuthService.buscarUsuarioLogado();
         setUser(currentUser);
       } catch (error) {
         console.log("Usuário não autenticado");
@@ -39,21 +42,34 @@ export default function Profile() {
 
   const { data: usuario } = useQuery({
     queryKey: ['usuario', user?.id],
-    queryFn: () => base44.entities.Usuario.filter({ email: user?.email }),
+    queryFn: async () => {
+      const list = await UsuarioService.buscarTodos();
+      return list.filter(u => u.email === user?.email);
+    },
     enabled: !!user,
     select: (data) => data[0]
   });
 
   const { data: posts } = useQuery({
     queryKey: ['user-posts', usuario?.id],
-    queryFn: () => base44.entities.Post.filter({ usuarioId: usuario?.id }, '-created_date'),
+    queryFn: async () => {
+      const all = await PostService.buscarTodos();
+      return all.filter(p => p.usuarioId === usuario?.id);
+    },
     enabled: !!usuario,
     initialData: []
   });
 
   const { data: portfolios } = useQuery({
     queryKey: ['user-portfolios', usuario?.id],
-    queryFn: () => base44.entities.Portfolio.filter({ usuarioId: usuario?.id }, '-created_date'),
+    queryFn: async () => {
+      try {
+        return await PortfolioService.listarPorUsuario(usuario?.id);
+      } catch (e) {
+        const all = await PortfolioService.listarPorUsuario(usuario?.id);
+        return all.filter(p => p.usuarioId === usuario?.id);
+      }
+    },
     enabled: !!usuario,
     initialData: []
   });
@@ -63,7 +79,7 @@ export default function Profile() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <p className="text-slate-400 mb-4">Você precisa estar logado</p>
-          <Button onClick={() => base44.auth.redirectToLogin()}>Fazer Login</Button>
+            <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white" onClick={() => AuthService.redirectToLogin()}>Fazer Login</Button>
         </div>
       </div>
     );

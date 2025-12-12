@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { AuthService } from "@/api/authService";
+import { UsuarioService } from "@/api/usuarioService";
+import { PortfolioService } from "@/api/portfolioService";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { PlusCircle, Code2, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,7 +17,7 @@ export default function Portfolio() {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const currentUser = await base44.auth.me();
+        const currentUser = await AuthService.buscarUsuarioLogado();
         setUser(currentUser);
       } catch (error) {
         console.log("Usuário não autenticado");
@@ -26,7 +28,10 @@ export default function Portfolio() {
 
   const { data: usuario } = useQuery({
     queryKey: ['usuario', user?.id],
-    queryFn: () => base44.entities.Usuario.filter({ email: user?.email }),
+    queryFn: async () => {
+      const list = await UsuarioService.buscarTodos();
+      return list.filter(u => u.email === user?.email);
+    },
     enabled: !!user,
     select: (data) => data[0]
   });
@@ -34,13 +39,11 @@ export default function Portfolio() {
   const { data: portfolios = [] } = useQuery({
     queryKey: ['portfolios', usuario?.id, filterStatus],
     queryFn: () => {
-      if (filterStatus === "all") {
-        return base44.entities.Portfolio.filter({ usuarioId: usuario?.id }, '-created_date');
-      }
-      return base44.entities.Portfolio.filter({ 
-        usuarioId: usuario?.id, 
-        status: filterStatus 
-      }, '-created_date');
+      // usar service novo; se precisar de filtro por status, fazemos client-side
+      return PortfolioService.listarPorUsuario(usuario?.id).then(list => {
+        if (filterStatus === "all") return list;
+        return list.filter(p => p.status === filterStatus);
+      });
     },
     enabled: !!usuario,
     initialData: []
@@ -54,7 +57,7 @@ export default function Portfolio() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <p className="text-slate-400 mb-4">Você precisa estar logado</p>
-          <Button onClick={() => base44.auth.redirectToLogin()}>Fazer Login</Button>
+            <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white" onClick={() => AuthService.redirectToLogin()}>Fazer Login</Button>
         </div>
       </div>
     );

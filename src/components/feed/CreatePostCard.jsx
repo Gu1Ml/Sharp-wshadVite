@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Image, Code2, Lightbulb, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { base44 } from "@/api/base44Client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { PostService } from "@/api/postService";
-import { useQueryClient } from "@tanstack/react-query";
+import { AuthService } from "@/api/authService";
+
 import {
   Dialog,
   DialogContent,
@@ -48,7 +48,7 @@ export default function CreatePostCard({ user, forceOpen = false, onClose }) {
 
     setIsSubmitting(true);
     try {
-      await base44.entities.Post.create({
+      await PostService.postar({
         usuarioId: user.id,
         conteudo,
         tipo,

@@ -14,7 +14,7 @@ import {
   LogOut
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { base44 } from "@/api/base44Client";
+import { AuthService } from "@/api/authService";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
@@ -26,7 +26,7 @@ export default function Layout({ children, currentPageName }) {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const currentUser = await base44.auth.me();
+        const currentUser = await AuthService.buscarUsuarioLogado();
         setUser(currentUser);
       } catch (error) {
         // Usuário não autenticado
@@ -44,7 +44,7 @@ export default function Layout({ children, currentPageName }) {
   ];
 
   const handleLogout = () => {
-    base44.auth.logout();
+    AuthService.deslogar();
   };
 
   const isActive = (url) => location.pathname === url;
