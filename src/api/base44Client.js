@@ -1,13 +1,15 @@
 /*
  Implementação simulada do SDK Base44 para desenvolvimento local.
 
+ !! ARQUIVO COMO BACKUP E NÃO SENDO UTILIZADO NO INSTANTE !!
+ 
  Uso:
  import { base44 } from '../api/base44Client';
  await base44.auth.me();
  await base44.entities.Post.list();
 
- This file provides in-memory arrays para Usuario, Post, Portfolio e Comentario
- and basic CRUD/filter/list operations. It's intentionally simple and dependency-free.
+Este arquivo fornece arrays em memória para Usuário, Postagem, Portfólio e Comentário
+e operações básicas de CRUD/filtro/listagem. Ele é intencionalmente simples e sem dependências.
 */
 
 const nowISO = () => new Date().toISOString();
